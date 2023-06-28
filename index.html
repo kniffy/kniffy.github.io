@@ -1,1 +1,75 @@
-hi
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+<title></title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="icon" href="data:,">
+</head>
+
+<body class="yzzyx">
+
+<main class="wrapper">
+<header class="blah">
+	<p>
+this is a short writeup of my experience tinkering with the old netbsd
+for playstation 2, which i never succeeded in getting to work, but the
+resources i found seem extremely rare at this point, so here i am writing
+this up now.
+	</p>
+
+	<p>
+most of my time spent tinkering was actually on ps2 linux, which i did
+get working, and even compiled some stuff for, such as an ftp server,
+which was all running smoothly on the official sony hard drive.
+	</p>
+</header>
+
+<div class="blah">
+	<p>
+see my ps2-netbsd.tzst file for an archive of the only compiled snapshots
+i was able to find, courtesy an old japanese bsd users group that i don't
+recall the name of.. (someone do let me know what it was)
+	</p>
+
+	<p>
+see the <a href="https://kernelloader.sourceforge.net/linux.html">kernelloader</a> 
+project for a loader to actually boot netbsd.. one needs a screen with
+sync-on-green, and a VGA cable, since netbsd only supports SVGA for video
+output
+	</p>
+
+	<p>
+in new developments since my time exploring in 2020, seemingly there is
+code and packages on the netbsd servers:
+	</p>
+
+	<p>
+<a id="ftp" href="https://ftp.netbsd.org/pub/NetBSD/NetBSD-current/src/sys/arch/playstation2/">https://ftp.netbsd.org/pub/NetBSD/NetBSD-current/src/sys/arch/playstation2/</a>
+<br><br>
+<a id="ftp" href="https://cdn.netbsd.org/pub/pkgsrc/packages/NetBSD/playstation2/">https://cdn.netbsd.org/pub/pkgsrc/packages/NetBSD/playstation2/</a>
+	</p>
+
+	<p>
+so perhaps netbsd 9 is working?
+	</p>
+
+	<p>
+given the existence of the freedvdboot exploit, seen here:
+	</p>
+
+	<p>
+<a id="ftp" href="https://cturt.github.io/freedvdboot.html">https://cturt.github.io/freedvdboot.html</a>
+	</p>
+
+	<p>
+the dream is for a netbsd livecd to be created, similar to wot is possible
+for the dreamcast. if netbsd 9 indeed works, this will make it a much better
+system than the now very ancient ps2 linux systems
+	</p>
+
+</div>
+
+</body>
+</html>
