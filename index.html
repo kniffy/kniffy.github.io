@@ -2,7 +2,7 @@
 <html lang="en-US">
 
 <head>
-<title>notes on netbsd/playstation2</title>
+<title>&zeta; notes</title>
 <meta charset="utf-8">
 <link rel="stylesheet" type="text/css" href="style.css">
 <link rel="icon" href="data:,">
@@ -12,88 +12,22 @@
 <body>
 
 <main class="wrapper">
-<header class="blah">
-	<p>
-this is a short writeup of my notes from tinkering with the old netbsd
-for playstation 2, which i never succeeded in getting to work, but the
-resources i found seem extremely rare at this point, so here i am writing
-this up now.
-	</p>
-
-<!--
-	<p>
-most of my time spent tinkering was actually on ps2 linux, which i did
-get working, and even compiled some stuff for, such as an ftp server,
-which was all running smoothly on the official sony hard drive.
-	</p>
--->
-</header>
-
-<div class="blah">
-	<p>
-see my <a href="https://tildas.org/files/ps2/ps2-netbsd.tzst">ps2-netbsd.tzst</a> file for an archive of the only compiled snapshots
-i was able to find, courtesy an old japanese bsd users group that i don't
-recall the name of.. (someone do let me know what it was)	SHA1SUM:
-	</p>
-
-	<code>334052b671f21c921d478c37915d1ff502e203d5</code>
-
-	<p>
-also browse the directory tree <a href="https://tildas.org/files/ps2/">here</a>.
-as you can see, i only have 2 snapshots, 1.5ZC (20020327) and 1.6A (20020526).
-i'm sure that others at one time existed, but i could not find them
-	</p>
-
-	<p>
-see the <a href="https://kernelloader.sourceforge.net/linux.html">kernelloader</a> 
-project for some info on booting an OS.. one needs a screen with
-sync-on-green, and a VGA cable, since netbsd only supports SVGA for video
-output. i'm not sure if this is an inherent netbsd quirk, or a limitation of
-this loader, but either way i would like to see a freshly written loader, this
-one i found to be overly complex to use
-	</p>
-
-	<p>
-there is also an alternate boot loader called <a href="https://ps2hacking.sourceforge.net/dists/ecos/">redboot</a>,
-which i have not tested myself, but it is maybe better for starting netbsd: 
-	</p>
-
-	<p>
-<a id="ftp" href="https://ps2hacking.sourceforge.net/">https://ps2hacking.sourceforge.net/</a>
-	</p>
-
-</div>
+<header class="blah"> <p> &zeta; notes </p> </header>
 
 <div class="full-bleed" id="sep"></div>
 
 <div class="blah">
-	<p>
-in new developments since my time exploring in 2020, seemingly there is
-code and packages on the netbsd servers, so perhaps netbsd 9 is working?:
-	</p>
-
-	<p>
-<a id="ftp" href="https://ftp.netbsd.org/pub/NetBSD/NetBSD-current/src/sys/arch/playstation2/">https://ftp.netbsd.org/pub/NetBSD/NetBSD-current/src/sys/arch/playstation2/</a>
-<br>
-<a id="ftp" href="https://cdn.netbsd.org/pub/pkgsrc/packages/NetBSD/playstation2/">https://cdn.netbsd.org/pub/pkgsrc/packages/NetBSD/playstation2/</a>
-	</p>
-
-	<p>
-given the existence of the <a href="https://cturt.github.io/freedvdboot.html">freedvdboot</a> exploit,
-the dream is for a netbsd livecd to be created, similar to what can be done
-for the <a href="https://youtu.be/ZAYgI1mfSd0">dreamcast</a>. if netbsd 9 indeed works, this will make it a much better
-system than the now very ancient ps2 linux systems
-	</p>
-
+	<p>notes on a lisp text adventure	(soon)</p>
+	<p><a href="netbsd.html">notes on netbsd/playstation2</a>	(orig 2023-06-28)</p>
 </div>
 
 <div class="full-bleed" id="sep"></div>
 
 <footer class="blah">
-	<pre> last-modified <time datetime="2023-07-02">2023-07-02</time>		<a href="https://tildas.org./">tildas.org.</a> </pre>
+<pre> last-modified <time datetime="2023-08-01">2023-08-01</time>		<a href="https://tildas.org./">tildas.org.</a> </pre>
 </footer>
 
 </main>
 </body>
-<!--$20230702-->
+<!--$20230801-->
 </html>
