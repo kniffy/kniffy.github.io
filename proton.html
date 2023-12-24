@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+<title>notes on debugging proton</title>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="icon" href="data:,">
+<base target="_blank">
+<!-- <style> .blah { font-size: 1.4rem; }</style> -->
+</head>
+
+<body>
+
+<main class="wrapper">
+<header class="blah">
+	<p>
+this is an informal collection of my notes during my time as a beta tester for
+Team Fortress 2 Classic. various issues and bugs were encountered, and maybe
+this will serve as a crash course reference to debugging games in proton
+	</p>
+</header>
+
+<div class="full-bleed" id="sep"></div>
+
+<article class="blah" id="one">
+	<p><b>attaching gdb, or, why the hell does the game crash?</b></p>
+
+	<p>
+it turns out to be relatively simple to get a debugger running on a game in
+proton.
+	</p>
+
+	<p>
+<code>PROTON_DUMP_DEBUG_COMMANDS=1</code> needs to be in your game's launch options
+	</p>
+
+	<p>
+with that set, navigate a shell to <code>/tmp/proton_&lt;username&gt;</code> and
+you'll find several helpful scripts, like <code>gdb_run</code>, which will
+launch and attach the debugger to the game's process
+	</p>
+
+	<p>
+for flatpak users, these scripts are in something like
+<code>/home/&lt;username&gt;/.var/app/com.valvesoftware.Steam/.cache/tmp/proton_&lt;username&gt;</code>
+	</p>
+
+</article>
+
+<div class="full-bleed" id="sep"></div>
+
+<article class="blah" id="two">
+	<p><b>file descriptor gremlins, or, eventfd: Too many open files</b></p>
+
+<!--	<p>
+one of the early major issues i ran into was a mysterious quirk where the game
+would run for a bit, maybe 20 minutes or so before crashing, seemingly without
+any rhyme or reason.
+	</p> -->
+
+	<p>
+as it turns out Proton uses ESYNC, a synchronization based on eventfd, which
+creates file descriptors, of which there is a maximum amount that can be
+created. normally you would think this is a Large Number&trade; but on my
+system this was only 4096, meaning rather quickly i would exhaust all
+descriptors and crash.
+	</p>
+
+	<p>
+for further reading see 
+<a id="ftp" href="https://github.com/ValveSoftware/wine/blob/proton_8.0/README.esync">README.esync</a>
+	</p>
+
+	<h6>solution 1</h6>
+	<p>
+upgrade to linux kernel 5.16 or greater, for FSYNC mode, which is based on
+futex2. Proton should automatically detect this and utilize it, and one can
+confirm this by checking proton logs for the line <code>fsync: up and running.</code>
+	</p>
+
+	<p>
+see <a id="ftp" href="https://www.kernel.org/doc/html/latest/userspace-api/futex2.html">futex2.html</a>
+for further reading
+	</p>
+
+	<h6>solution 2</h6>
+	<p>
+raise your system's number of file descriptors. even if you use kernel 5.16 or
+greater, it's probably a good idea to raise this. systemd distros probably
+have a Large Number&trade; by default. other systems probably define
+this in <code>/etc/security/limits.conf</code>
+	</p>
+
+	<p>
+add a line like <code>* hard nofile 1048576</code>
+	</p>
+
+	<p>
+note that if you are running the flatpak version of steam, you may need to
+check the file descriptor limits within the container, though it <i>should</i>
+inherit the value of the host system
+	</p>
+
+</article>
+
+<div class="full-bleed" id="sep"></div>
+
+<footer class="blah">
+	<pre> last-modified <time datetime="2023-12-24">2023-12-24</time>		<a href="https://tildas.org./">tildas.org.</a> </pre>
+</footer>
+
+</main>
+</body>
+<!--$20231224-->
+</html>
